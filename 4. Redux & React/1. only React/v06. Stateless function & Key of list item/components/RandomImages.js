@@ -11,7 +11,7 @@ export default class RandomImages extends Component{
   randomImages() {
     this.setState({loading: "loading..."});
     var imgurAPI = "https://api.imgur.com/3/gallery/random/random/1";
-    /* This is an asynchronous function which gets data from imgurAPI */
+    /* This is an asynchronous function which gets data from the imgur API */
     $.getJSON(imgurAPI).done(data =>{
         this.setState({data:data.data, loading: "loaded"})
     })

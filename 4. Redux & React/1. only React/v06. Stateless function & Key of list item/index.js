@@ -5,8 +5,8 @@ import Sum from './components/Sum'
 import RandomImages from './components/RandomImages'
 class Describe extends Component {
   constructor(props) {
-    super(props) 
-    
+    super(props)
+
   }
   render() {
     console.log('Examples.render()');
@@ -20,7 +20,7 @@ class Describe extends Component {
 }
 class Examples extends Component {
   constructor(props) {
-    super(props) 
+    super(props)
   }
   render() {
     console.log('Examples.render()');
@@ -37,5 +37,5 @@ class Examples extends Component {
 
 ReactDOM.render(
   <Examples/>,
-  document.getElementById('root')  
+  document.getElementById('root')
 )
