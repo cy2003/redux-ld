@@ -4,6 +4,7 @@
     <title>Redux basic example</title>
     <!--STEP 1.1-->
     <script src="https://unpkg.com/redux@latest/dist/redux.min.js"></script>
+    <!-- get this link from github -->
     <!--~end STEP 1.1-->
   </head>
   <body>
@@ -18,6 +19,7 @@
       // step 1.2
       console.group('Redux.createStore(REDUCER)')
       var store = Redux.createStore(counter);
+      // counter is a paramenter we get from github
       console.groupEnd('Redux.createStore(REDUCER)')
       // ~end step 1.2
       // step 1.3
@@ -26,15 +28,22 @@
         console.group('render()')
         console.log('STATE == store.getState() == ', store.getState())
         valueEl.innerHTML = store.getState().count;
+        // if state is an object with count = 0. That value will be attached to the innerHTML of valueEl
+        // we are not allowed to assign direct values to the state. We need to set a Default value
         console.groupEnd('render()')
       }
       render();
       store.subscribe(render);
       // ~end step 1.3
       // step 2.2
+      // This is reducer. It accepts 2 paramenters. Reducer is a function which
+      // is passed as a paramenter in var store = Redux.createStore(counter);
+      // currentState is the State object
       function counter(currentState, action) { // REDUCER
+        // this creates a default state
         var DEFAULT_STATE = {count:0};
         console.group('REDUCER')
+        // cannot change the currentState so we need to clone it to return the new state
         var nextState = Object.assign({}, currentState);
         console.log('current STATE == ', currentState)
         if(currentState === undefined){ // look at Note 1.1
@@ -62,6 +71,7 @@
             console.log("");
             console.group("store.dispatch(action)")
             console.info("ACTION == ", action)
+            // dispatch is a member of store. It receives action as a paramenter
             store.dispatch(action);
             console.groupEnd("store.dispatch(action)")
             // ~end step 2.1

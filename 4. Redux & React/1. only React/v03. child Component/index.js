@@ -29,7 +29,7 @@ class Sum extends Component{
     console.log('Sum.render()');
     return (
       <div>
-        <input value={this.state.a} onChange={(e)=>this.setState({a: e.target.value})}/> 
+        <input value={this.state.a} onChange={(e)=>this.setState({a: e.target.value})}/>
         + <input value={this.state.b} onChange={(e)=>this.setState({b: e.target.value})}/>
         = <span>{this.state.sum}</span>
         <button onClick={() => this.setState({sum: Number(this.state.a) + Number(this.state.b)})}>Sum</button>
@@ -38,12 +38,13 @@ class Sum extends Component{
     )
   }
 }
+
+/* <Counter/> and <Sum/> are components that are the children of Examples
+component. Child component always start with an uppercase letter. */
 class Examples extends Component {
   constructor(props) {
-    super(props)    
-    
+    super(props)
   }
-
   render() {
     console.log('Examples.render()');
     return (
@@ -55,8 +56,10 @@ class Examples extends Component {
     )
   }
 }
-
+/* When you re-render the parent component <Examples/> all the child
+components get re-rendered too. But a child component can get re-rendered
+without re-rendering the parent component. */
 ReactDOM.render(
   <Examples/>,
-  document.getElementById('root')  
+  document.getElementById('root')
 )

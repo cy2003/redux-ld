@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
-import Counter2, {a as a2, b} from './components/Counter'
+/* You can import the default and other components from one file if you put commas inbetween. You can also change the name of the variable a to a2 as shown below. */
+import Counter, {a as a2, b} from './components/Counter'
 import Sum from './components/Sum'
 
 console.log(a2);
@@ -8,8 +9,8 @@ console.log(b);
 
 class Examples extends Component {
   constructor(props) {
-    super(props)    
-    
+    super(props)
+
   }
 
   render() {
@@ -17,7 +18,7 @@ class Examples extends Component {
     return (
       <div>
         <h1>React</h1>
-        <Counter2/>
+        <Counter/>
         <Sum/>
       </div>
     )
@@ -26,5 +27,5 @@ class Examples extends Component {
 
 ReactDOM.render(
   <Examples/>,
-  document.getElementById('root')  
+  document.getElementById('root')
 )

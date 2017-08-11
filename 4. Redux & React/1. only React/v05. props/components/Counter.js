@@ -5,6 +5,7 @@ export default class Counter extends Component{
     this.state = {count: 0}
     this.decrease = this.decrease.bind(this);
   }
+  /* this.props.countDesc() comes from the parent Examples component */
   decrease() {
     this.setState({count: this.state.count - 1});
     this.props.countDesc('Click "decrease" button');

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Redux basic example</title>
+    <script src="https://unpkg.com/redux@latest/dist/redux.min.js"></script>
+  </head>
+  <body>
+    <div>
+      <p>
+        Clicked: <span id="value">?</span>
+        <button id="decrement">Decrease</button>
+        <button id="increment">Increase</button>
+      </p>
+    </div>
+    <script>
+      // counter is a reducer
+      var store = Redux.createStore(counter);
+
+      var elementValue = document.getElementById('value');
+      function render() {
+        elementValue.innerHTML = store.getState().count;
+        /* The state is an object with count = 0. That value will be attached to
+        the innerHTML of elementValue. */
+      }
+      render();
+
+      store.subscribe(render);
+
+      /* The counter function is a reducer. It accepts 2 paramenters - the current
+      state and an action. Reducer is a function which is passed as a paramenter
+      in var store = Redux.createStore(counter); currentState is the State object */
+      function counter(currentState, action) {
+
+        // this creates a default state
+        var DEFAULT_STATE = {count:0};
+
+        // cannot change the currentState so we need to clone it to return the new state
+        var nextState = Object.assign({}, currentState);
+
+        if(currentState === undefined){
+          nextState = DEFAULT_STATE;
+          return nextState;
+        }
+
+        switch(action.type){
+          case 'DECREMENT':
+            nextState.count = currentState.count - 1;
+            return nextState;
+          case 'INCREMENT':
+            nextState.count = currentState.count + 1;
+            return nextState;
+          default:
+            return nextState;
+        }
+      }
+
+      document.getElementById('decrement')
+        .addEventListener('click', function () {
+            var action = {type: 'DECREMENT'};
+            // dispatch is a member of store. It receives action as a paramenter
+            store.dispatch(action);
+        })
+      document.getElementById('increment')
+        .addEventListener('click', function () {
+          var action = {type: 'INCREMENT'};
+          store.dispatch(action);
+        })
+    </script>
+  </body>
+</html>
+
+
+getState()
+subscribe(listener)
+dispatch(action)
